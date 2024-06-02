@@ -70,32 +70,23 @@
 
                 <TextView
                     android:id="@+id/tv_products1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewBig"
                     android:text="@string/products"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="32sp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:textStyle="bold"
                     android:visibility="gone"
                     />
 
                 <TextView
                     android:id="@+id/tv_all2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewMiddle"
                     android:text="@string/all"
                     app:layout_constraintTop_toBottomOf="@id/tv_products1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:visibility="gone"/>
@@ -123,24 +114,16 @@
 
             <TextView
                 android:id="@+id/tv_products"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TextViewBig"
                 android:text="@string/products"
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/black"
-                android:textSize="32sp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="52dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:id="@+id/tv_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TextViewMiddle"
                 android:text="@string/all"
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp" />
 

@@ -1,6 +1,8 @@
     package com.example.shop_app_test.presenter.ui.fragments
 
+    import android.annotation.SuppressLint
     import android.app.AlertDialog
+    import android.content.res.ColorStateList
     import android.graphics.Color
     import android.graphics.drawable.ColorDrawable
     import android.util.Log
@@ -140,6 +142,7 @@
 
         }
 
+        @SuppressLint("ResourceAsColor")
         private fun alertDialog() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
             val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
@@ -152,11 +155,15 @@
             val rbElectronics = dialogView.findViewById<RadioButton>(R.id.rb_electronics)
             val rbWomenClock = dialogView.findViewById<RadioButton>(R.id.rb_women_clock)
 
-            rbAll.setupColorStateList()
-            rbMensClock.setupColorStateList()
-            rbJewelry.setupColorStateList()
-            rbElectronics.setupColorStateList()
-            rbWomenClock.setupColorStateList()
+            val radioButtons = listOf(rbAll, rbMensClock, rbJewelry, rbElectronics, rbWomenClock)
+            radioButtons.forEach { radioButton ->
+                radioButton.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if (isChecked) {
+                        radioButtons.filter { it != radioButton }.forEach { it.isChecked = false }
+                    }
+                }
+            }
+            radioButtons.forEach { it.setupColorStateList() }
 
             tvAccept.setOnClickListener {
                 val selectedCategory = when {
@@ -174,10 +181,10 @@
                 alertDialog?.dismiss()
             }
 
+
             builder.setView(dialogView)
             alertDialog = builder.create()
             alertDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             alertDialog?.show()
         }
-
     }

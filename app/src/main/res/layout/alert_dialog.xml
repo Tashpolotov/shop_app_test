@@ -60,13 +60,8 @@
 
             <TextView
                 android:id="@+id/tv_all"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/all2"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"/>
+                style="@style/TextViewSmallForAlert"
+                android:text="@string/all2" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/rb_all"
@@ -97,13 +92,9 @@
 
             <TextView
                 android:id="@+id/tv_mens_clock"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/TextViewSmallForAlert"
                 android:text="@string/men_s_clothing"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"/>
+              />
 
             <RadioButton
                 android:id="@+id/rb_mens_clock"
@@ -133,13 +124,9 @@
 
             <TextView
                 android:id="@+id/tv_jewelry"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/TextViewSmallForAlert"
                 android:text="@string/jewelry"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"/>
+                />
 
             <RadioButton
                 android:id="@+id/rb_jewerly"
@@ -168,13 +155,9 @@
 
             <TextView
                 android:id="@+id/tv_electronics"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/TextViewSmallForAlert"
                 android:text="@string/electronics"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"/>
+              />
 
             <RadioButton
                 android:id="@+id/rb_electronics"
@@ -204,13 +187,9 @@
 
             <TextView
                 android:id="@+id/tv_women_clock"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Women's clothing"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"/>
+                style="@style/TextViewSmallForAlert"
+                android:text="@string/women_s_clothing"
+          />
 
             <RadioButton
                 android:id="@+id/rb_women_clock"
