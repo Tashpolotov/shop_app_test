@@ -7,6 +7,7 @@
     import android.graphics.drawable.ColorDrawable
     import android.util.Log
     import android.view.View
+    import android.view.animation.AccelerateDecelerateInterpolator
     import android.view.animation.Animation
     import android.view.animation.AnimationUtils
     import android.widget.Button
@@ -14,6 +15,9 @@
     import android.widget.RadioButton
     import android.widget.RatingBar
     import android.widget.TextView
+    import androidx.core.content.ContextCompat
+    import androidx.core.view.ViewCompat
+    import androidx.core.view.WindowInsetsControllerCompat
     import androidx.fragment.app.viewModels
     import androidx.navigation.fragment.findNavController
     import by.kirich1409.viewbindingdelegate.viewBinding
@@ -30,6 +34,7 @@
     import com.google.android.material.bottomsheet.BottomSheetBehavior
     import com.google.android.material.bottomsheet.BottomSheetDialog
     import dagger.hilt.android.AndroidEntryPoint
+    import java.lang.Math.abs
 
     @AndroidEntryPoint
     class ProductsFragment : BaseFragment(R.layout.fragment_products) {
@@ -39,7 +44,7 @@
         private val adapter = ProductsAdapter(this::onClick)
         private lateinit var selectModel:Product
         private var alertDialog: AlertDialog? = null
-
+        private var isCollapsed = false
         override fun initialize() {
             binding.rvProduct.adapter = adapter
             binding.imgShop.setOnClickListener {
@@ -48,16 +53,8 @@
             binding.imgCategory.setOnClickListener {
                 alertDialog()
             }
-
-            binding.nescrolled.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                binding.imgLogo.visibility = if (scrollY > 0) View.INVISIBLE else View.VISIBLE
-                binding.tvProducts1.visibility = if (scrollY > 0) View.VISIBLE else View.GONE
-                binding.tvAll2.visibility = if (scrollY > 0) View.VISIBLE else View.GONE
-                binding.tvProducts.visibility = if (scrollY > 0) View.INVISIBLE else View.VISIBLE
-                binding.tvAll.visibility = if (scrollY > 0) View.INVISIBLE else View.VISIBLE
-            }
+            collapsingToolbarListener()
     }
-
         override fun initSubscribers() {
             viewModel.products.collectUIState(
                 state = {},
@@ -181,10 +178,58 @@
                 alertDialog?.dismiss()
             }
 
-
             builder.setView(dialogView)
             alertDialog = builder.create()
             alertDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             alertDialog?.show()
+        }
+
+        private fun collapsingToolbarListener() = with(binding) {
+            appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+                val scrollRange = appBarLayout.totalScrollRange
+                val alpha = 1.0f - abs(verticalOffset / scrollRange.toFloat())
+                imgLogo.alpha = alpha
+
+                if (abs(verticalOffset) >= scrollRange) {
+                    activity?.window?.let { window ->
+                        window.statusBarColor =
+                            ContextCompat.getColor(requireContext(), R.color.grayAvarage)
+                        WindowInsetsControllerCompat(
+                            window,
+                            window.decorView
+                        ).isAppearanceLightStatusBars = false
+                    }
+                } else {
+                    activity?.window?.let { window ->
+                        window.statusBarColor =
+                            ContextCompat.getColor(requireContext(), R.color.graylight)
+                        WindowInsetsControllerCompat(
+                            window,
+                            window.decorView
+                        ).isAppearanceLightStatusBars = true
+                    }
+                }
+                val currentHeight = scrollRange + verticalOffset
+
+                if (currentHeight < 152 && !isCollapsed) {
+                    //centering tvCategory
+                    isCollapsed = true
+
+                    val translationX = products.width / 2 - tvCategory.width / 2
+
+                    tvMovingAnimation(translationX.toFloat())
+                } else if (currentHeight > 20 && isCollapsed) {
+                    //moving to starting pos
+                    isCollapsed = false
+
+                    tvMovingAnimation(0f)
+                }
+            }
+        }
+        private fun tvMovingAnimation(sum: Float) = with(binding) {
+            ViewCompat.animate(tvCategory)
+                .translationX(sum)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .start()
         }
     }

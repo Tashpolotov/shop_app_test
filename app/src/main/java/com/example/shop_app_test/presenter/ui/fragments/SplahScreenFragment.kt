@@ -36,6 +36,13 @@ class SplahScreenFragment : BaseFragment(R.layout.fragment_splah_screen) {
     override fun onStop() {
         super.onStop()
         delayJob?.cancel()
+    }
 
+    override fun onStart() {
+        super.onStart()
+        delayJob = lifecycleScope.launch {
+            delay(3000)
+            findNavController().navigate(R.id.productsFragment)
+        }
     }
 }
