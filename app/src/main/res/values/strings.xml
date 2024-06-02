@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">shop_app_test</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="products">Products</string>
+    <string name="all">ALL</string>
+    <string name="fjallraven_foldsack_no_1_backpack_fits_15_laptops">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</string>
+    <string name="prodduct_name">Prodduct Name</string>
+    <string name="category">Category</string>
+    <string name="mens_clock">Mens clock</string>
+    <string name="rating">Rating</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="the_color_could_be_slightly_different_between_on_the_screen_and_in_practice_please_note_that_body_builds_vary_by_person_therefore_detailed_size_information_should_be_reviewed_below_on_the_product_description">The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.</string>
+    <string name="go_to_card">GO TO CARD</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="cart">Cart</string>
+    <string name="add_something">Add something</string>
+    <string name="empty">Empty</string>
+    <string name="choose_your_preferred">Choose your preferred</string>
+    <string name="all2">All</string>
+    <string name="men_s_clothing"><![CDATA[Men\'s clothing]]></string>
+    <string name="jewelry">Jewelry</string>
+    <string name="electronics">Electronics</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+</resources>

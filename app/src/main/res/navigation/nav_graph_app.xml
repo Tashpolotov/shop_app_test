@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_app"
+    app:startDestination="@id/splahScreenFragment">
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.shop_app_test.presenter.ui.fragments.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splahScreenFragment"
+        android:name="com.example.shop_app_test.presenter.ui.fragments.SplahScreenFragment"
+        android:label="fragment_splah_screen"
+        tools:layout="@layout/fragment_splah_screen" >
+        <action
+            android:id="@+id/action_splahScreenFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basketFragment"
+        android:name="com.example.shop_app_test.presenter.ui.fragments.BasketFragment"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" />
+
+
+</navigation>
